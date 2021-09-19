@@ -1,35 +1,72 @@
-# Pizza::Machine
+# Ruby Fundamentals
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pizza/machine`. To experiment with that code, run `bin/console` for an interactive prompt.
+# Lecture topics:
+- Variables
+- Methods
+- Conditionals
+- Arrays 
+- Hashes
+- Loops
+- Iteration
+- puts
+- binding.pry
 
-TODO: Delete this and the text above, and describe your gem
+### Introduction 
+- Up to this point, we have only been looking and working on front end applications, without our own customized backend so we are going to be moving towards building a backend using the Ruby language
+- The reason for this is because Ruby already comes equipped with the tools necessary to create a strong backend
+- We will start off by building an application that is used through a command line interface, which is the terminal, and then we will move that app to the web browser
 
-## Installation
+### What we will be building?
 
-Add this line to your application's Gemfile:
+- The main goal of this app will be to allow users to create and submit their own pizzas.
 
-```ruby
-gem 'pizza-machine'
+#### Program flow:
+1. Welcome user and prompt to input name
+2. Provide menu options: See list of created pizzas or create a new one
+3. If user selects to add a new pizza, it will be added to the already submitted collection
+4. If the list is selected, print a list of all pizzas
+5. Allow a user to loop through program
+6. Allow user to exit program
+
+### Application Mechanics
+- Go over the different files and folders and explain how they all work together 
+
+- To run the application: 
+```
+./bin/run
 ```
 
-And then execute:
+- If permission is denied:
+```
+chmod +x ./bin/run
+```
 
-    $ bundle install
+So our first goal is going to be to add some greetings and help user navigate through app:
 
-Or install it yourself as:
+```
+def init
+  puts "Welcome to the lean, mean Pizza Machine App!"
+  puts "Tell us your name: "
+  user = gets.strip
+  puts "Awesome, #{user.capitalize}, What would you like to do?"
+  menu
+end
+```
 
-    $ gem install pizza-machine
+Next up, we need to build the menu:
 
-## Usage
+```
+def menu
+  puts "Enter the number of your selection, or 'exit' to leave the app."
+  menu_options
+end 
 
-TODO: Write usage instructions here
+def menu_options
+  puts " 1. Create a new pizza!"
+  puts " 2. View the list of created pizzas"
+  puts " 3. Change your mind? Enter exit to leave the app"
+end 
+```
 
-## Development
+Now we need to handle our users selection
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/pizza-machine.
